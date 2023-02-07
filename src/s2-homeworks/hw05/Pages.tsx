@@ -18,11 +18,11 @@ function Pages() {
             <Routes>
 
                 {/*роутинг будут писать студенты*/}
-                <Route path='/:id' element={<PreJunior />} />  {/*в начале мы попадаем на страницу '/' и переходим сразу на страницу /pre-junior*/}
+                <Route path='/' element={<PreJunior />} />  {/*в начале мы попадаем на страницу '/' и переходим сразу на страницу /pre-junior*/}
                 {/*<Route ...*/}
 
                 {/*роуты для /pre-junior, /junior, /junior-plus*/}
-                <Route path='/prejunior' element={<PreJunior />} />
+                <Route path='/pre-junior' element={<PreJunior />} />
                 <Route path='/junior' element={<Junior />} />
                 <Route path='/junior-plus' element={<JuniorPlus />} />
 
