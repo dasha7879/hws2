@@ -1,5 +1,13 @@
 .buttonsContainer {
+    display: grid;
+    grid-template-columns: 116px 116px;
+    grid-gap: 50px;
 }
 
 .editableSpanContainer {
+    
+}
+
+#hw6-save{
+    margin: 0 25px 0 0;
 }
