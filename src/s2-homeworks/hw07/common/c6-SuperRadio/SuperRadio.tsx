@@ -19,7 +19,7 @@ type DefaultSpanPropsType = DetailedHTMLProps<
 type SuperRadioPropsType = Omit<DefaultRadioPropsType, 'type'> & {
     options?: any[]
     onChangeOption?: (option: any) => void
-
+   
     spanProps?: DefaultSpanPropsType // пропсы для спана
 }
 
@@ -34,8 +34,11 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
     spanProps,
     ...restProps
 }) => {
-    const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-        // делают студенты
+    const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {     
+        console.log(value)
+        onChangeOption?.(e.target.value)
+        console.log(value)
+    
     }
 
     const finalRadioClassName = s.radio + (className ? ' ' + className : '')
@@ -48,8 +51,10 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
                       id={id + '-input-' + o.id}
                       className={finalRadioClassName}
                       type={'radio'}
+                      name = {o.id}
+                      value = {o.id}
+                      checked={o.id==value}
                       // name, checked, value делают студенты
-
                       onChange={onChangeCallback}
                       {...restProps}
                   />
