@@ -36,8 +36,9 @@ const HW8 = () => {
     const sortUp = () => {
         setPeople(
             homeWorkReducer(initialPeople, {type: 'sort', payload: 'up'})
-        ) // в алфавитном порядке a.name > b.name
-        setCurrentSort('up')
+            // initialPeople.sort((a,b)=> a.name - b.name)
+        ) 
+        setCurrentSort('')
     }
 
     const sortDown = () => {
