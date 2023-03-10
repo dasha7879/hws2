@@ -5,9 +5,12 @@
 }
 
 .users {
+    
 }
 
 .buttonsContainer {
+    display: flex;
+    flex-direction: row;
 }
 
 .container {
