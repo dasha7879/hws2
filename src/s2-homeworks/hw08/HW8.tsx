@@ -4,6 +4,7 @@ import s from './HW8.module.css'
 import s2 from '../../s1-main/App.module.css'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
 import User from './User'
+import { initializeConnect } from 'react-redux/es/components/connect'
 
 /*
 * 1 - дописать типы и логику (сортировка по имени, фильтрация по совершеннолетию) homeWorkReducer, проверить тестом
@@ -36,8 +37,10 @@ const HW8 = () => {
     const sortUp = () => {
         setPeople(
             homeWorkReducer(initialPeople, {type: 'sort', payload: 'up'})
+           
             // initialPeople.sort((a,b)=> a.name - b.name)
         ) 
+        
         setCurrentSort('')
     }
 
@@ -48,9 +51,10 @@ const HW8 = () => {
         setCurrentSort('down')
     }
     const check18 = () => {
+        // setPeople(people)
         setPeople(
             homeWorkReducer(initialPeople, {type: 'check', payload: 18})
-        ) // совершеннолетние
+        )
         setCurrentSort('18')
     }
 

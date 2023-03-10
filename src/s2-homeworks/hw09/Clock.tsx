@@ -1,6 +1,6 @@
-import React, {MouseEventHandler, useState} from 'react'
+import React, { MouseEventHandler, useState } from 'react'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
-import {restoreState} from '../hw06/localStorage/localStorage'
+import { restoreState } from '../hw06/localStorage/localStorage'
 import s from './Clock.module.css'
 
 
@@ -13,9 +13,8 @@ function Clock() {
   const [show, setShow] = useState<boolean>(false);
 
   const start = () => {
-    console.log("hi");
     let interval = setInterval(() => setDate(new Date()), 1000);
-    setTimerId(+interval);
+    setTimerId(Number(interval));
     setShow(true);
   };
   // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
@@ -40,20 +39,25 @@ function Clock() {
   const stringTime = date.toLocaleTimeString("en-US", {
     hour12: false,
   }) || <br />;
+
   // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01)
   const stringDate = date.toLocaleDateString("fr-CH", {
     day: "2-digit",
     month: "2-digit",
-    year: "2-digit",
-  }) ||<br />; // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
-  console.log(stringDate);
+    year: "numeric",
+  }) || <br />; // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
+
   // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
-  const stringDay = `${date.toLocaleDateString("en-GB", {
+  const stringDay = date.toLocaleDateString("en-GB", {
     weekday: "long",
-  })},` || <br />;
-  const stringMonth = date.toLocaleTimeString("en-US", {
+  }) || <br />;
+  const stringMonth = date.toLocaleDateString("en-US", {
     month: "long",
-  })  ||<br />;
+  }) || <br />;
+
+
+
+
 
   return (
     <div className={s.clock}>
@@ -63,7 +67,7 @@ function Clock() {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <span id={"hw9-day"}>{stringDay}</span>
+        <span id={"hw9-day"}>{stringDay},</span>
         <span id={"hw9-time"}>
           <strong>{stringTime}</strong>
         </span>
