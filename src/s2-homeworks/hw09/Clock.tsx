@@ -49,15 +49,13 @@ function Clock() {
 
   // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
   const stringDay = date.toLocaleDateString("en-GB", {
-    weekday: "long",
+    weekday: "long"
   }) || <br />;
+  console.log(stringDay)
   const stringMonth = date.toLocaleDateString("en-US", {
-    month: "long",
+    month: "long"
   }) || <br />;
-
-
-
-
+ 
 
   return (
     <div className={s.clock}>
@@ -67,7 +65,7 @@ function Clock() {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <span id={"hw9-day"}>{stringDay},</span>
+        <span id={"hw9-day"}>{stringDay}</span>
         <span id={"hw9-time"}>
           <strong>{stringTime}</strong>
         </span>

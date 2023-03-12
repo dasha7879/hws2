@@ -1,3 +1,40 @@
 .loader {
-    /*свг и/или анимация*/
+    position: absolute;
+    z-index: 1;
+    top: 27%;
+    left: 9%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    height: 90px;
+    background: transparent;
+    border-radius: 50%;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+}
+
+.loader::before {
+    z-index: 2;
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: animateC 2s linear infinite;
+    background: conic-gradient(white, white) padding-box, linear-gradient(to right, #552cf7, #bbaee3) border-box;
+    border-radius: 50em;
+    border: 6px solid transparent;
+
+}
+
+@keyframes animateC {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
