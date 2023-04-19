@@ -19,5 +19,7 @@ html {
 }
 
 .select {
-
+    width: 171px;
+    height: 36px;
+    padding-left: 10px;
 }
