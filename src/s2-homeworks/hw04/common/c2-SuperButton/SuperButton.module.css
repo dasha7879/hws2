@@ -15,14 +15,15 @@
     line-height: 20px;
     color: white;
     cursor: pointer;
+    margin:24px;
 }
 
-.disabled {
+/* .disabled {
     background: #004D99;
     opacity: 0.5;
     border-radius: 3px;
     color: rgba(0, 46, 92, 1);
-}
+} */
 
 .secondary {
     width: 167px;
