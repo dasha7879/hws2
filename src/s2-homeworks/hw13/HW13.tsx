@@ -54,13 +54,13 @@ const HW13 = () => {
                  }else if(e.response.status === 400){
                     setCode('Ошибка 400!')
                     setImage(error400)
-                    setText('Ты не отправил success в body вообще! ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!')
-                    setInfo('')
+                    setText('Ты не отправил success в body вообще!')
+                    setInfo('ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!')
                 } else {
                     setCode('Error')
                     setImage(errorUnknown)
                     setText('Network Error AxiosError')
-                    setInfo('')
+                    setInfo('Error')
                 }
               
                
