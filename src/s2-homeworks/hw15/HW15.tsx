@@ -5,7 +5,6 @@ import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
-
 /*
 * 1 - дописать SuperPagination
 * 2 - дописать SuperSort
@@ -28,6 +27,7 @@ type ParamsType = {
 }
 
 const getTechs = (params: ParamsType) => {
+    console.log(params)
     return axios
         .get<{ techs: TechType[], totalCount: number }>(
             'https://samurai.it-incubator.io/api/3.0/homework/test3',
@@ -40,8 +40,8 @@ const getTechs = (params: ParamsType) => {
 
 const HW15 = () => {
     const [sort, setSort] = useState('')
-    const [page, setPage] = useState(1)
-    const [count, setCount] = useState(4)
+    const [page, setPage] = useState(5)
+    const [count, setCount] = useState(7)
     const [idLoading, setLoading] = useState(false)
     const [totalCount, setTotalCount] = useState(100)
     const [searchParams, setSearchParams] = useSearchParams()
@@ -51,24 +51,35 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
+            console.log(res);
+            
                 // делает студент
+                if(res){
+                    
+                    setTechs(res.data.techs)
+                    console.log(res.data.techs.length)
 
+                    // setTotalCount(res.data.totalCount)
+                    // console.log(res.data.totalCount) 
+                }
+            
                 // сохранить пришедшие данные
+
 
                 //
             })
     }
 
+
+
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
-
-        // setPage(
-        // setCount(
-
-        // sendQuery(
-        // setSearchParams(
-
-        //
+       
+        setPage(newPage)
+        setCount(newCount)
+        sendQuery({page:newPage, count:newCount})
+        setSearchParams({page:newPage.toString(), count:newCount.toString()})
+     
     }
 
     const onChangeSort = (newSort: string) => {
@@ -84,7 +95,10 @@ const HW15 = () => {
     }
 
     useEffect(() => {
+        console.log(searchParams)
         const params = Object.fromEntries(searchParams)
+        console.log(params)   
+        console.log(searchParams.get("page"))     
         sendQuery({page: params.page, count: params.count})
         setPage(+params.page || 1)
         setCount(+params.count || 4)
