@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import s2 from '../../s1-main/App.module.css'
 import s from './HW14.module.css'
 import axios from 'axios'
@@ -30,28 +30,40 @@ const HW14 = () => {
     const [isLoading, setLoading] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const [techs, setTechs] = useState<string[]>([])
+    const debouncedValue = useRef('');
+    
+    useEffect(() => {
+        debouncedValue.current = find;
+      }, [find]);
+    
+      useEffect(() => {
+        const timerId = setTimeout(() => {
+          sendQuery(debouncedValue.current);
+        }, 1500);
+    
+        return () => {
+          clearTimeout(timerId);
+        };
+      }, [debouncedValue]);
 
+      
     const sendQuery = (value: string) => {
         setLoading(true)
         getTechs(value)
-            .then((res) => {                
+            .then((res) => {             
               if(res){
+                console.log(res);
                 setTechs(res.data.techs)
                 setLoading(false)
               }
               
-         
             })
     }
 
+
     const onChangeText = (value: string) => {
         setFind(value)
-        // делает студент
-
-        // добавить/заменить значение в квери урла
         setSearchParams(({find:value}))
-
-        //
     }
 
     useEffect(() => {
