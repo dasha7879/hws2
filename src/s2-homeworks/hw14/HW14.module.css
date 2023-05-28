@@ -1,7 +1,18 @@
 .tech {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
 
 }
 
 .loading {
-
+    display: block;
+    font-family: 'Roboto';
+    font-style: normal;
+    width:468px;
+    color: rgba(77, 77, 77, 1);
+    text-align: end;
+    font-weight: 300;
 }

@@ -27,7 +27,6 @@ type ParamsType = {
 }
 
 const getTechs = (params: ParamsType) => {
-    console.log(params)
     return axios
         .get<{ techs: TechType[], totalCount: number }>(
             'https://samurai.it-incubator.io/api/3.0/homework/test3',
@@ -51,16 +50,12 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
-            console.log(res);
             
                 // делает студент
                 if(res){
                     
                     setTechs(res.data.techs)
-                    console.log(res.data.techs.length)
 
-                    // setTotalCount(res.data.totalCount)
-                    // console.log(res.data.totalCount) 
                 }
             
                 // сохранить пришедшие данные
@@ -95,10 +90,8 @@ const HW15 = () => {
     }
 
     useEffect(() => {
-        console.log(searchParams)
         const params = Object.fromEntries(searchParams)
-        console.log(params)   
-        console.log(searchParams.get("page"))     
+           
         sendQuery({page: params.page, count: params.count})
         setPage(+params.page || 1)
         setCount(+params.count || 4)

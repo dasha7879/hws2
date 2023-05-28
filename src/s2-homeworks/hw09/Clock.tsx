@@ -51,7 +51,6 @@ function Clock() {
   const stringDay = date.toLocaleDateString("en-GB", {
     weekday: "long"
   }) || <br />;
-  console.log(stringDay)
   const stringMonth = date.toLocaleDateString("en-US", {
     month: "long"
   }) || <br />;
